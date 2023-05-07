@@ -44,8 +44,12 @@ calculateDiffInDays = () => {
 // Event listener 
 btn.addEventListener('click', (e) => {
     e.preventDefault();
-    const diffInDays = calculateDiffInDays();
-
-    // Show result
-    result.innerHTML = diffInDays;
+    if (inputDate1.value === '' || inputHour1.value === '' || moment2Date.value === '' || moment2Hour.value === '') {
+        // result.innerHTML = 'Preencha todos os campos';
+    }else {
+        const diffInDays = calculateDiffInDays();
+    
+        // Show result
+        result.innerHTML = diffInDays;
+    }
 });
