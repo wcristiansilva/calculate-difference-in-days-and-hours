@@ -19,14 +19,26 @@ calculateDiffInDays = () => {
     let newMoment1Date = new Date(inputDate1.value + ' ' + inputHour1.value);
     let newMoment2Date = new Date(moment2Date.value + ' ' + moment2Hour.value);
 
-    let diffInYears = Math.floor((newMoment2Date.getTime() - newMoment1Date.getTime()) / (1000 * 60 * 60 * 24 * 365));
-    let diffInDMonth = Math.floor((newMoment2Date.getTime() - newMoment1Date.getTime()) / (1000 * 60 * 60 * 24 * 30));
-    let diffInDays = Math.floor((newMoment2Date.getTime() - newMoment1Date.getTime()) / (1000 * 60 * 60 * 24));
-    let diffInHours = Math.floor((newMoment2Date.getTime() - newMoment1Date.getTime()) / (1000 * 60 * 60));
-    let diffInMinutes = Math.floor((newMoment2Date.getTime() - newMoment1Date.getTime()) / (1000 * 60));
-    
-    return `${diffInYears} anos, ${diffInDMonth} meses, ${diffInDays} dias, ${diffInHours} horas e ${diffInMinutes} minutos`
+    if (newMoment2Date.getTime() > newMoment1Date.getTime()) {
 
+        let diffInYears = Math.floor((newMoment2Date.getTime() - newMoment1Date.getTime()) / (1000 * 60 * 60 * 24 * 365));
+        let diffInDMonth = Math.floor((newMoment2Date.getTime() - newMoment1Date.getTime()) / (1000 * 60 * 60 * 24 * 30));
+        let diffInDays = Math.floor((newMoment2Date.getTime() - newMoment1Date.getTime()) / (1000 * 60 * 60 * 24));
+        let diffInHours = Math.floor((newMoment2Date.getTime() - newMoment1Date.getTime()) / (1000 * 60 * 60));
+        let diffInMinutes = Math.floor((newMoment2Date.getTime() - newMoment1Date.getTime()) / (1000 * 60));
+        
+        return `${diffInYears} anos, ${diffInDMonth} meses, ${diffInDays} dias, ${diffInHours} horas e ${diffInMinutes} minutos`
+
+    } else {
+
+        let diffInYears = Math.floor((newMoment1Date.getTime() - newMoment2Date.getTime()) / (1000 * 60 * 60 * 24 * 365));
+        let diffInDMonth = Math.floor((newMoment1Date.getTime() - newMoment2Date.getTime()) / (1000 * 60 * 60 * 24 * 30));
+        let diffInDays = Math.floor((newMoment1Date.getTime() - newMoment2Date.getTime()) / (1000 * 60 * 60 * 24));
+        let diffInHours = Math.floor((newMoment1Date.getTime() - newMoment2Date.getTime()) / (1000 * 60 * 60));
+        let diffInMinutes = Math.floor((newMoment1Date.getTime() - newMoment2Date.getTime()) / (1000 * 60));
+        
+        return `${diffInYears} anos, ${diffInDMonth} meses, ${diffInDays} dias, ${diffInHours} horas e ${diffInMinutes} minutos`
+    }    
 }
 
 // Event listener 
